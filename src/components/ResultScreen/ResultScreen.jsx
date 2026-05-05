@@ -24,7 +24,16 @@ export default function ResultScreen({ name, themeIndex, onRestart }) {
   };
 
   return (
-    <div className={styles.container} style={{ backgroundColor: theme.bg }}>
+    <div
+      className={styles.container}
+      style={{
+        backgroundColor: theme.bg,
+        backgroundImage: `linear-gradient(to bottom, ${theme.bg} 0%, transparent 75%), url(${theme.image})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
       <div className={styles.card}>
         <div className={styles.emoji} aria-hidden="true">
           {theme.emoji}
@@ -50,6 +59,7 @@ export default function ResultScreen({ name, themeIndex, onRestart }) {
           🔄 다시하기
         </button>
       </div>
+
     </div>
   );
 }

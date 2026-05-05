@@ -7,6 +7,8 @@
   padding: 24px;
   gap: 28px;
   transition: background-color 0.4s;
+  background-size: cover;
+  background-position: center bottom;
 }
 
 .card {

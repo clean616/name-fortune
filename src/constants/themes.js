@@ -3,6 +3,7 @@ export const THEMES = [
     key: '꽃',
     label: '꽃나라',
     emoji: '🌸',
+    image: '/flower.png',
     bg: '#FFD6E0',
     textColor: '#c2185b',
     messages: [
@@ -17,6 +18,7 @@ export const THEMES = [
     key: '별',
     label: '별나라',
     emoji: '⭐',
+    image: '/star.png',
     bg: '#FFF3B0',
     textColor: '#f57f17',
     messages: [
@@ -31,6 +33,7 @@ export const THEMES = [
     key: '천',
     label: '천국',
     emoji: '☁️',
+    image: '/heaven.png',
     bg: '#C9E8FF',
     textColor: '#0277bd',
     messages: [
@@ -45,6 +48,7 @@ export const THEMES = [
     key: '지',
     label: '지옥',
     emoji: '🔥',
+    image: '/hell.png',
     bg: '#E8D5FF',
     textColor: '#6a1b9a',
     messages: [
