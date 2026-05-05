@@ -5,6 +5,18 @@ import styles from './StartScreen.module.css';
 export default function StartScreen({ onStart }) {
   const [name, setName] = useState('');
   const [error, setError] = useState('');
+  const [copied, setCopied] = useState(false);
+
+  const handleShareApp = async () => {
+    const url = window.location.origin;
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    } catch {
+      prompt('아래 주소를 복사해주세요:', url);
+    }
+  };
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -59,6 +71,14 @@ export default function StartScreen({ onStart }) {
             aria-label="이름점 점치기"
           >
             점치기 ✨
+          </button>
+          <button
+            type="button"
+            className={styles.shareButton}
+            onClick={handleShareApp}
+            aria-label="앱 공유하기"
+          >
+            {copied ? '복사됨! ✅' : '공유하기 🔗'}
           </button>
         </form>
 
