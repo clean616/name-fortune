@@ -51,16 +51,14 @@ export function isValidKoreanName(name) {
   return /^[가-힣]{2,5}$/.test(name);
 }
 
-// 중성이 세로모음인지 여부 (초성이 왼쪽에 배치되는 레이아웃)
-const VERTICAL_VOWELS = new Set([
-  'ㅏ','ㅐ','ㅑ','ㅒ','ㅓ','ㅔ','ㅕ','ㅖ','ㅣ',
-  'ㅘ','ㅙ','ㅚ','ㅝ','ㅞ','ㅟ',
-]);
+const VOWEL_CATEGORIES = {
+  VERTICAL:   new Set(['ㅏ','ㅑ','ㅓ','ㅕ','ㅣ','ㅐ','ㅒ','ㅔ','ㅖ']),
+  HORIZONTAL: new Set(['ㅗ','ㅛ','ㅜ','ㅠ','ㅡ']),
+  COMPLEX:    new Set(['ㅘ','ㅙ','ㅚ','ㅝ','ㅞ','ㅟ','ㅢ']),
+};
 
 export function getLayoutType(jung, hasJong) {
-  const isVertical = VERTICAL_VOWELS.has(jung);
-  if (isVertical && !hasJong) return 'A'; // 초성 좌 / 중성 우
-  if (!isVertical && !hasJong) return 'B'; // 초성 상 / 중성 하
-  if (isVertical && hasJong) return 'C';  // 초성 상좌 / 중성 우 / 종성 하
-  return 'D';                              // 초성 상 / 중성 중 / 종성 하
+  if (VOWEL_CATEGORIES.COMPLEX.has(jung))    return hasJong ? 'F' : 'E';
+  if (VOWEL_CATEGORIES.HORIZONTAL.has(jung)) return hasJong ? 'D' : 'B';
+  return hasJong ? 'C' : 'A';
 }
