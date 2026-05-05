@@ -11,8 +11,9 @@ export default function ResultScreen({ name, themeIndex, onRestart }) {
   const [copied, setCopied] = useState(false);
 
   const handleShare = async () => {
-    const url = new URL(window.location.href);
+    const url = new URL('/api/share', window.location.origin);
     url.searchParams.set('name', name);
+    url.searchParams.set('theme', themeIndex);
     try {
       await navigator.clipboard.writeText(url.toString());
       setCopied(true);

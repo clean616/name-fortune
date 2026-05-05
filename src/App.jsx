@@ -13,9 +13,16 @@ export default function App() {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const sharedName = params.get('name');
+    const sharedTheme = params.get('theme');
     if (sharedName && isValidKoreanName(sharedName)) {
       setName(sharedName);
-      setScreen('animation');
+      const themeIndex = parseInt(sharedTheme);
+      if (!isNaN(themeIndex) && themeIndex >= 0 && themeIndex <= 3) {
+        setResultThemeIndex(themeIndex);
+        setScreen('result');
+      } else {
+        setScreen('animation');
+      }
     }
   }, []);
 
