@@ -1,0 +1,18 @@
+.charSvg {
+  width: 100%;
+  height: 100%;
+  color: #3a3a3a;
+}
+
+.hidden {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  opacity: 0.08;
+}
+
+.revealed {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
+}
